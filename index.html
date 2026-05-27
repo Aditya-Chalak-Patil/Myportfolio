@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aditya Dilip Chalak — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f5f4f0;--bg2:#ebebE4;--card:#ffffff;--text:#1a1a1a;--text2:#666;
+  --accent:#1d4ed8;--accent2:#3b82f6;--border:#e0dfd8;--nav:#f5f4f0cc;
+}
+.dark{
+  --bg:#0f0f11;--bg2:#161618;--card:#1c1c1f;--text:#f0eff5;--text2:#999;
+  --accent:#60a5fa;--accent2:#93c5fd;--border:#2a2a2e;--nav:#0f0f11cc;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);transition:background .4s,color .4s;overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;transition:background .4s,border-color .4s;}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--text);}
+.logo span{color:var(--accent);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.85rem;font-weight:500;color:var(--text2);text-decoration:none;letter-spacing:.3px;transition:color .2s;}
+.nav-links a:hover{color:var(--accent);}
+.dark-btn{background:none;border:1px solid var(--border);border-radius:20px;padding:6px 14px;cursor:pointer;font-size:.8rem;color:var(--text2);display:flex;align-items:center;gap:6px;transition:all .2s;font-family:'DM Sans',sans-serif;}
+.dark-btn:hover{border-color:var(--accent);color:var(--accent);}
+
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:80px 2rem 2rem;overflow:hidden;}
+.hero-inner{max-width:900px;width:100%;display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:.78rem;color:var(--accent);font-weight:500;margin-bottom:1.5rem;opacity:0;transform:translateY(20px);animation:fadeUp .6s .2s forwards;}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulseAnim 1.5s infinite;}
+@keyframes pulseAnim{0%,100%{opacity:1;}50%{opacity:.3;}}
+h1{font-family:'Syne',sans-serif;font-size:3.4rem;font-weight:800;line-height:1.05;letter-spacing:-2.5px;color:var(--text);opacity:0;transform:translateY(20px);animation:fadeUp .6s .4s forwards;}
+h1 .hl{color:var(--accent);}
+.hero-sub{font-size:.98rem;color:var(--text2);line-height:1.75;margin:1.3rem 0 2rem;font-weight:300;opacity:0;transform:translateY(20px);animation:fadeUp .6s .6s forwards;}
+.hero-btns{display:flex;gap:12px;opacity:0;transform:translateY(20px);animation:fadeUp .6s .8s forwards;}
+.btn-p{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:12px 26px;font-size:.88rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
+.btn-p:hover{background:var(--accent2);transform:translateY(-2px);}
+.btn-o{background:transparent;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:12px 26px;font-size:.88rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
+.btn-o:hover{border-color:var(--accent);color:var(--accent);}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2rem;text-align:center;opacity:0;transform:translateY(30px);animation:fadeCard .7s .5s forwards;box-shadow:0 8px 60px rgba(0,0,0,.07);}
+@keyframes fadeCard{to{opacity:1;transform:translateY(0);}}
+.avatar{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:#fff;}
+.hero-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:.3rem;}
+.hero-card p{font-size:.82rem;color:var(--text2);}
+.tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:1.2rem;}
+.tag{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:4px 11px;font-size:.72rem;color:var(--text2);font-weight:500;}
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:1.2rem;}
+.stat{background:var(--bg2);border-radius:12px;padding:.9rem;text-align:center;}
+.stat-num{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);}
+.stat-label{font-size:.72rem;color:var(--text2);margin-top:2px;}
+
+section{padding:90px 2rem;max-width:900px;margin:0 auto;}
+.section-label{font-size:.72rem;letter-spacing:3px;color:var(--accent);font-weight:600;text-transform:uppercase;margin-bottom:.8rem;}
+.section-title{font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;letter-spacing:-1.5px;margin-bottom:2.5rem;line-height:1.15;}
+
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:2.5rem;align-items:start;}
+.about-text{font-size:.95rem;color:var(--text2);line-height:1.85;}
+.about-text strong{color:var(--text);font-weight:500;}
+.info-list{display:flex;flex-direction:column;gap:10px;}
+.info-item{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.75rem 1rem;}
+.info-icon{font-size:1.1rem;width:30px;text-align:center;}
+.info-label{font-size:.72rem;color:var(--text2);margin-bottom:2px;}
+.info-value{font-size:.85rem;color:var(--text);font-weight:500;}
+
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.3rem;transition:all .25s;cursor:default;}
+.skill-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.06);}
+.skill-icon{font-size:1.6rem;margin-bottom:.7rem;}
+.skill-name{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:.3rem;}
+.skill-level{font-size:.75rem;color:var(--text2);margin-bottom:.8rem;}
+.bar-bg{height:4px;background:var(--bg2);border-radius:4px;overflow:hidden;}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:4px;width:0;transition:width 1.3s cubic-bezier(.4,0,.2,1);}
+
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.6rem;transition:all .25s;position:relative;overflow:hidden;}
+.proj-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.proj-card:hover::after{transform:scaleX(1);}
+.proj-card:hover{transform:translateY(-5px);box-shadow:0 16px 50px rgba(0,0,0,.09);}
+.proj-tag{font-size:.69rem;color:var(--accent);font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:.6rem;}
+.proj-name{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.5rem;}
+.proj-desc{font-size:.82rem;color:var(--text2);line-height:1.65;}
+.proj-tech{display:flex;flex-wrap:wrap;gap:5px;margin-top:1rem;}
+.tech-pill{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:.7rem;color:var(--text2);}
+
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2.5rem 3rem;display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;}
+.contact-text h3{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;line-height:1.2;margin-bottom:.9rem;letter-spacing:-1px;}
+.contact-text p{color:var(--text2);font-size:.88rem;line-height:1.75;}
+.contact-links{display:flex;flex-direction:column;gap:10px;}
+.c-link{display:flex;align-items:center;gap:12px;padding:.85rem 1rem;border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);font-size:.83rem;font-weight:500;transition:all .2s;background:var(--bg2);}
+.c-link:hover{border-color:var(--accent);color:var(--accent);transform:translateX(4px);}
+.c-icon{width:34px;height:34px;border-radius:9px;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:1rem;border:1px solid var(--border);flex-shrink:0;}
+
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;font-size:.8rem;color:var(--text2);}
+footer span{color:var(--accent);font-weight:500;}
+
+.bg-blob{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.1;}
+.blob1{width:500px;height:500px;background:var(--accent);top:-150px;right:-150px;}
+.blob2{width:350px;height:350px;background:var(--accent2);bottom:0;left:-100px;}
+section,nav,.hero{position:relative;z-index:1;}
+
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:720px){
+  .hero-inner{grid-template-columns:1fr;}
+  .about-grid,.skills-grid,.projects-grid,.contact-card{grid-template-columns:1fr;}
+  h1{font-size:2.4rem;}
+  .hero-card{display:none;}
+  .section-title{font-size:1.8rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-blob blob1"></div>
+<div class="bg-blob blob2"></div>
+
+<nav>
+  <div class="logo">ADC<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="dark-btn" onclick="toggleDark()" id="darkBtn">🌙 Dark Mode</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="pulse"></span> Open to Opportunities</div>
+      <h1>Aditya<br><span class="hl">Dilip</span><br>Chalak</h1>
+      <p class="hero-sub">AI & Data Science student passionate about cybersecurity, web development, and crafting digital experiences that stand out.</p>
+      <div class="hero-btns">
+        <button class="btn-p" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+        <button class="btn-o" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in Touch</button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="avatar">AC</div>
+      <h3>Aditya Chalak</h3>
+      <p>Pune, Maharashtra 🇮🇳</p>
+      <div class="tags">
+        <span class="tag">AI & DS</span>
+        <span class="tag">Cybersecurity</span>
+        <span class="tag">Web Dev</span>
+        <span class="tag">SPPU</span>
+      </div>
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-num">2nd</div>
+          <div class="stat-label">Year Engg.</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="about" class="reveal">
+  <div class="section-label">Who I Am</div>
+  <div class="section-title">About Me</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a <strong>2nd-year AI & Data Science engineering student</strong> at Genba Moze College of Engineering, Wagholi, Pune (SPPU). I'm deeply interested in <strong>cybersecurity</strong>, with a focused long-term goal of working alongside cyber law enforcement agencies.</p>
+      <br/>
+      <p>Beyond security, I love building <strong>visually impressive web experiences</strong> — animated interfaces, personalized tools, and creative projects for friends and family. I believe great code should also be great design.</p>
+      <br/>
+      <p>Currently learning and growing every day — one project at a time.</p>
+    </div>
+    <div class="info-list">
+      <div class="info-item">
+        <div class="info-icon">🎓</div>
+        <div>
+          <div class="info-label">University</div>
+          <div class="info-value">SPPU, Pune</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">Location</div>
+          <div class="info-value">Pune, Maharashtra</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🛡️</div>
+        <div>
+          <div class="info-label">Focus</div>
+          <div class="info-value">Cybersecurity</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">💼</div>
+        <div>
+          <div class="info-label">Status</div>
+          <div class="info-value">Open to Internships</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">Portfolio</div>
+          <div class="info-value">aditya0424-byte.github.io</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <div class="section-label">What I Know</div>
+  <div class="section-title">Skills & Tools</div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🐍</div>
+      <div class="skill-name">Python</div>
+      <div class="skill-level">Intermediate</div>
+      <div class="bar-bg"><div class="bar-fill" data-width="70"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚙️</div>
+      <div class="skill-name">C / C++</div>
+      <div class="skill-level">Intermediate</div>
+      <div class="bar-bg"><div class="bar-fill" data-width="65"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-name">HTML & CSS</div>
+      <div class="skill-level">Advanced</div>
+      <div class="bar-bg"><div class="bar-fill" data-width="85"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-name">JavaScript</div>
+      <div class="skill-level">Intermediate</div>
+      <div class="bar-bg"><div class="bar-fill" data-width="60"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🛡️</div>
+      <div class="skill-name">Cybersecurity</div>
+      <div class="skill-level">Actively Learning</div>
+      <div class="bar-bg"><div class="bar-fill" data-width="30"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-name">AI & Data Science</div>
+      <div class="skill-level">Learning</div>
+      <div class="bar-bg"><div class="bar-fill" data-width="40"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="reveal">
+  <div class="section-label">What I've Built</div>
+  <div class="section-title">Projects</div>
+  <div class="projects-grid">
+    <div class="proj-card">
+      <div class="proj-tag">Web Dev</div>
+      <div class="proj-name">Personal Portfolio</div>
+      <div class="proj-desc">A clean, animated portfolio site hosted on GitHub Pages to showcase skills and projects.</div>
+      <div class="proj-tech">
+        <span class="tech-pill">HTML</span><span class="tech-pill">CSS</span><span class="tech-pill">JS</span><span class="tech-pill">GitHub Pages</span>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-tag">Creative</div>
+      <div class="proj-name">Romantic Confession Site</div>
+      <div class="proj-desc">A love-themed website with floating hearts, scroll-reveal effects, background music, and a glowing photo frame.</div>
+      <div class="proj-tech">
+        <span class="tech-pill">HTML</span><span class="tech-pill">CSS Animations</span><span class="tech-pill">JS</span>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-tag">Family</div>
+      <div class="proj-name">Chalak Parivar Album</div>
+      <div class="proj-desc">A private family photo album site with a nostalgic aesthetic, created with love for the Chalak family since 1974.</div>
+      <div class="proj-tech">
+        <span class="tech-pill">HTML</span><span class="tech-pill">CSS</span><span class="tech-pill">Responsive</span>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-tag">Web App</div>
+      <div class="proj-name">Family Login System</div>
+      <div class="proj-desc">Multi-user login web app with personalized profile pages for each family member and predefined credentials.</div>
+      <div class="proj-tech">
+        <span class="tech-pill">HTML</span><span class="tech-pill">JavaScript</span><span class="tech-pill">LocalStorage</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <div class="section-label">Let's Connect</div>
+  <div class="section-title">Get in Touch</div>
+  <div class="contact-card">
+    <div class="contact-text">
+      <h3>Open to Collaborations &amp; Opportunities</h3>
+      <p>Whether it's a project collab, internship, or just a conversation about tech, cybersecurity, or web design — I'd love to hear from you. Let's build something great.</p>
+    </div>
+    <div class="contact-links">
+      <a class="c-link" href="https://aditya0424-byte.github.io" target="_blank">
+        <div class="c-icon">🌐</div>
+        aditya0424-byte.github.io
+      </a>
+      <a class="c-link" href="https://github.com/aditya0424-byte" target="_blank">
+        <div class="c-icon">🐙</div>
+        GitHub Profile
+      </a>
+      <a class="c-link" href="mailto:aditya@example.com">
+        <div class="c-icon">📧</div>
+        Send an Email
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; built with ❤️ by <span>Aditya Dilip Chalak</span> · 2025</p>
+</footer>
+
+<script>
+let isDark = false;
+function toggleDark(){
+  isDark = !isDark;
+  document.body.classList.toggle('dark', isDark);
+  document.getElementById('darkBtn').textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+}
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      e.target.querySelectorAll('.bar-fill').forEach(b => {
+        setTimeout(() => { b.style.width = b.dataset.width + '%'; }, 300);
+      });
+    }
+  });
+}, {threshold: 0.12});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
